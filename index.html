@@ -25,13 +25,43 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <script src="page.js"></script>
+
     <title>Truth Seekers Share</title>
 </head>
 
 <body>
-    <a href="facebookshare.html" target="_blank" class="btn btn-primary" id="facebook-share-btn">Share to facebook</a>
-    <a href="twittershare.html" target="_blank" class="btn btn-primary" id="twitter-share-btn">Share to Twitter</a>
-    <a href="twittershare.html" target="_blank" class="btn btn-primary" id="twitter-share-btn">One more social media</a>
+    <!--Init Facebook SDK-->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '493977535090083',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v10.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button id="facebook-share-btn" class="btn btn-primary">Share to Facebook</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" id="twitter-share-btn">
+                    Share to Twitter
+                </button>
+            </div>
+        </div>
+
+
+
+    </div>
 </body>
 
 </html>
