@@ -34,7 +34,7 @@ $(document).ready(function () {
             display: 'popup',
             method: 'share',
             quote: 'Join us in Truth Seekers!',
-            href: 'https://developers.facebook.com/',
+            href: 'https://boblight.github.io/about.html',
             media: '',
 
         }, function (response) { });
