@@ -25,8 +25,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <script src="page.js"></script>
-
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
@@ -46,26 +44,11 @@
     <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Truth Seekers Share</title>
+    <title>About</title>
 
 </head>
 
-<body onload="storeData()">
-
-    <script>
-        //Store user data
-        function storeData() {
-
-            if (typeof (Storage) !== "undefined") {
-                const urlParams = new URLSearchParams(window.location.search);
-                sessionStorage.setItem("user", urlParams.get("user"));
-                sessionStorage.setItem("code", urlParams.get("code"));
-            } else {
-                alert("Sorry ! No Webstorage Support");
-            }
-
-        }
-    </script>
+<body>
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -88,23 +71,28 @@
         </div>
     </nav>
 
-    <!--Facebook share card-->
-    <div class="card text-center bg-light mb-3">
+    <div class="card mb-3">
+        <img src="images/play.jpg" card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Share to Facebook</h5>
-            <a id="facebook-share-btn" class="btn btn-outline-dark" href="facebookshare.html">
-                <img src="images/fb_logo_1024.png" width="100" height="100" alt="">
-            </a>
+            <h5 class="card-title">Play</h5>
+            <p class="card-text">Learn SSAD topics through games !</p>
+        </div>
+
+    </div>
+
+    <div class="card mb-3">
+        <img src="images/community.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Create</h5>
+            <p class="card-text">Create your own worlds !</p>
         </div>
     </div>
 
-    <!--Twitter share card-->
-    <div class="card text-center bg-light mb-3">
+    <div class="card mb-3">
+        <img src="images/community2.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Share to Twitter</h5>
-            <button id="twitter-share-btn" class="btn btn-outline-dark">
-                <img src="images/twitter_logo.svg" width="100" height="100" alt="">
-            </button>
+            <h5 class="card-title">Challenge</h5>
+            <p class="card-text">Send challenges to your fellow students !</p>
         </div>
     </div>
 

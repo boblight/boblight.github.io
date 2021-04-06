@@ -46,26 +46,11 @@
     <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Truth Seekers Share</title>
+    <title>Share to Facebook</title>
 
 </head>
 
-<body onload="storeData()">
-
-    <script>
-        //Store user data
-        function storeData() {
-
-            if (typeof (Storage) !== "undefined") {
-                const urlParams = new URLSearchParams(window.location.search);
-                sessionStorage.setItem("user", urlParams.get("user"));
-                sessionStorage.setItem("code", urlParams.get("code"));
-            } else {
-                alert("Sorry ! No Webstorage Support");
-            }
-
-        }
-    </script>
+<body>
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -88,23 +73,41 @@
         </div>
     </nav>
 
-    <!--Facebook share card-->
-    <div class="card text-center bg-light mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Share to Facebook</h5>
-            <a id="facebook-share-btn" class="btn btn-outline-dark" href="facebookshare.html">
-                <img src="images/fb_logo_1024.png" width="100" height="100" alt="">
-            </a>
-        </div>
-    </div>
+    <!--Init Facebook SDK-->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '493977535090083',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v10.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-    <!--Twitter share card-->
-    <div class="card text-center bg-light mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Share to Twitter</h5>
-            <button id="twitter-share-btn" class="btn btn-outline-dark">
-                <img src="images/twitter_logo.svg" width="100" height="100" alt="">
-            </button>
+    <!--FB Sharing instructions-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-2">Share to Facebook</h1>
+                    <hr class="my-4">
+                    <p>To share the code to Facebook, copy the text below and paste it inside the sharing dialog</p>
+                    <p class="text-danger">Due to Facebooks' Privacy Policy, we are unable to prefill the sharing dialog
+                        for you :(</p>
+                    <div class="input-group mb-3">
+                        <input id="sharing-dialog-text" class="form-control" type="text"
+                            placeholder="Readonly input here…" readonly>
+                        <div class="input-group-prepend">
+                            <button id="copy-btn" class="btn btn-primary" type="button">Copy</button>
+                        </div>
+                    </div>
+                    <p class="lead">
+                        <button id="fb-post-btn" class="btn btn-primary btn-lg">Post to Facebook!</button>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 

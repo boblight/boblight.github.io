@@ -1,44 +1,44 @@
 $(document).ready(function () {
 
-    function parsequerystring(){
-         
+    function getSharingText() {
+
+        //returns sharing text according to user type
+        return (sessionStorage.getItem("user") == 0 ? "New assignment added. Please use this code to access: " : "I've created a new quiz. Join me by using this code: ") + sessionStorage.getItem("code");
+
+    }
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).val()).select();
+        document.execCommand("copy");
+        $temp.remove();
     }
 
     $("#twitter-share-btn").click(function () {
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('code');
-        let twiturl = 'https://twitter.com/intent/tweet?text=';
-        let msg = "Truth Seeker ID: ";
-        msg = msg.replace(/\s+/g, "%20");
-        msg = msg.concat(myParam);
-        twiturl = twiturl.concat(msg);
+        let twiturl = "https://twitter.com/intent/tweet?text=" + getSharingText().replace(/\s+/g, "%20");
         window.location.href = twiturl;
 
     });
 
-    $("#facebook-share-btn").click(function () {
+    $("#sharing-dialog-text").val(getSharingText());
 
-        // const urlParams = new URLSearchParams(window.location.search);
-        //const myParam = urlParams.get('code');
-        //let hrefpage = "facebookshare.html?code=";
-        //hrefpage = hrefpage.concat(myParam);
-        //window.location.href = hrefpage;  
+    $("#copy-btn").click(function () {
+        copyToClipboard("#sharing-dialog-text");
+    })
+
+    $("#fb-post-btn").click(function () {
 
         FB.ui({
             display: 'popup',
             method: 'share',
             quote: 'Join us in Truth Seekers!',
             href: 'https://developers.facebook.com/',
-            media: '', 
+            media: '',
 
         }, function (response) { });
 
-    });
-
-    
-
-
-
+    })
 
 });
